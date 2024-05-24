@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style/general.css" />
+    <link rel="stylesheet" href="./style/strat.css" />
+  </head>
+  <body id="body">
+    <div id="grid"></div>
+    <div id="tools">
+      <div class="item"><img src="./images/Axe.jpg" alt="Axe" /></div>
+      <div class="item"><img src="./images/Shovel.jpg" alt="Shovel" /></div>
+      <div class="item"><img src="./images/Pickaxe.jpg" alt="Pickaxe" /></div>
+    </div>
+    <div id="StartGame" class="StartGame">
+      <span class="Best">Best in class!</span>
+      <button class="choice" id="Singleplayer">SinglePlayer</button>
+      <button class="choice" id="Multiplayer">Multiplayer</button>
+      <button class="choice" id="Realms">Minecraft Realms</button>
+      <div class="OQ">
+        <button class="choice" id="Options">Options...</button>
+        <button class="choice" id="Quit">Quit Game</button>
+      </div>
+      <footer>
+        <span>Minecraft 1.20.6</span>
+        <span>Copyright Hussein. Do not distribute!</span>
+      </footer>
+    </div>
+    <div id="createWorld" class="createWorld">
+      <label for="worldName">World Name</label>
+      <input type="text" id="worldName" name="worldName" value="New World" />
+      <button class="choice" id="gameModeButton">
+        Game Mode: <span id="gameMode">Survival</span>
+      </button>
+      <button class="choice" id="difficultyButton">
+        Difficulty: <span id="difficulty">Normal</span>
+      </button>
+      <button class="choice" id="commandButton">
+        Allow Commands: <span id="commands">Off</span>
+      </button>
+      <div class="OQ">
+        <button class="choice" id="cancelButton">Cancel</button>
+        <button class="choice" id="createWorldButton">Create World</button>
+      </div>
+    </div>
+    <script src="./js/start.js" type="module"></script>
+  </body>
+</html>

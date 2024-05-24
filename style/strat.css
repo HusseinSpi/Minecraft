@@ -1,0 +1,189 @@
+#grid {
+  display: grid;
+  width: 80%;
+  gap: 0;
+}
+
+.StartGame {
+  background-image: url("../images/startGameBackground.jpg");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  gap: 15px;
+}
+
+.OQ {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.Best {
+  position: absolute;
+  top: 19%;
+  right: 23%;
+  font-size: 30px;
+  transform: rotate(-20deg);
+  animation: pulse 2s infinite;
+  color: gold;
+}
+
+.choice {
+  background-color: rgb(74, 74, 74);
+  width: 500px;
+  height: 45px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.choice:hover {
+  border: 2px solid white;
+  cursor: pointer;
+}
+
+.OQ .choice {
+  width: 243px;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+}
+
+.createWorld {
+  background-image: url("../images/Backagaround-newWord.avif");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  height: 100vh;
+  position: relative;
+  gap: 15px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 20px;
+}
+
+.createWorld::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.createWorld input {
+  width: 500px;
+  height: 45px;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  padding: 10px;
+  font-size: 20px;
+}
+
+.createWorld * {
+  z-index: 2;
+}
+
+.cell {
+  width: 100%;
+  height: 37px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+
+.sky {
+  background-color: lightskyblue;
+}
+
+.grass {
+  background-image: url("../images/grass.png");
+}
+
+.dirt {
+  background-image: url("../images/dirt.png");
+}
+
+.stone {
+  background-image: url("../images/Stone.jpg");
+}
+
+.sand {
+  background-image: url("../images/sand.png");
+}
+
+.coal {
+  background-image: url("../images/coal.png");
+}
+
+.iron {
+  background-image: url("../images/iron.png");
+}
+
+.gold {
+  background-image: url("../images/gold.png");
+}
+
+.diamond {
+  background-image: url("../images/diamond.png");
+}
+
+.emerald {
+  background-image: url("../images/emerald.png");
+}
+
+.redstone {
+  background-image: url("../images/redstone.png");
+}
+
+.wood {
+  background-image: url("../images/wood.png");
+}
+
+.leaves {
+  background-image: url("../images/leaves.png");
+}
+
+#tools {
+  display: none;
+  margin: 100px auto;
+  flex-direction: column;
+}
+
+.item img {
+  width: 150px;
+}
+
+.item img:hover {
+  cursor: pointer;
+}
+
+.item {
+  border: 2px solid black;
+  background: wheat;
+  margin: 10px;
+}
