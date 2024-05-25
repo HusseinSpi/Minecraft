@@ -42,11 +42,12 @@ class Game {
             let randomNumber = Math.floor(Math.random() * 10) + 1;
             if (randomNumber === 1) {
               this.addTree(i, j);
-            } else {
-              this.gridMap[i][j] = "sky";
+            } else if (randomNumber === 2) {
+              this.gridMap[i][j] = "zombie";
             }
+          } else {
+            this.gridMap[i][j] = "sky";
           }
-          this.gridMap[i][j] = "sky";
         } else if (i <= Math.floor(this.grid / 2) + 2) {
           this.gridMap[i][j] = "grass";
         } else {
@@ -85,18 +86,7 @@ class Game {
 
         switch (this.gridMap[c][r]) {
           case "sky":
-            if (c === this.grid / 2) {
-              let randomNumber = Math.floor(Math.random() * 10) + 1;
-              if (randomNumber === 1) {
-                if (this.isMonster) {
-                  newDiv.classList.add("zombie");
-                }
-              } else {
-                newDiv.classList.add("sky");
-              }
-            } else {
-              newDiv.classList.add("sky");
-            }
+            newDiv.classList.add("sky");
             break;
           case "grass":
             newDiv.classList.add("grass");
@@ -134,6 +124,9 @@ class Game {
           case "leaves":
             newDiv.classList.add("leaves");
             break;
+          case "zombie":
+            newDiv.classList.add("zombie");
+            break;
           default:
             break;
         }
@@ -146,7 +139,7 @@ class Game {
   }
 
   addTree(i, j) {
-    this.gridMap[i][j] = "stone";
+    this.gridMap[i][j] = "wood";
     this.gridMap[i - 1][j] = "wood";
     this.gridMap[i - 2][j] = "wood";
     this.gridMap[i - 3][j] = "leaves";
