@@ -12,6 +12,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const command = document.getElementById("commands");
   const cancelButton = document.getElementById("cancelButton");
   const createWorldButton = document.getElementById("createWorldButton");
+  const audio = document.getElementById("background-music");
+  audio.volume = 0;
+  audio
+    .play()
+    .then(() => {
+      audio.volume = 1;
+    })
+    .catch((error) => {
+      console.error("Failed to play the audio:", error);
+    });
 
   const player = new Player();
 
