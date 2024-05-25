@@ -1,10 +1,10 @@
 class Game {
-  constructor(gameName, gameMode, commands, difficulty) {
+  constructor(player, gameName, gameMode, commands, difficulty) {
+    this.player = player;
     this.gameName = gameName;
     this.gameMode = gameMode;
     this.commands = commands;
     this.difficulty = difficulty;
-    this.isPlayer = null;
     this.isMonster = null;
     this.grid = null;
     this.gridMap = [];
@@ -77,18 +77,135 @@ class Game {
 
         switch (this.gridMap[c][r]) {
           case "sky":
-            newDiv.classList.add("sky");
+            if (c === this.grid / 2) {
+              let randomNumber = Math.floor(Math.random() * 10) + 1;
+              if (randomNumber === 1) {
+                if (this.isMonster) {
+                  newDiv.classList.add("zombie");
+                }
+              } else if (randomNumber === 2) {
+                newDiv.classList.add("wood");
+              } else {
+                newDiv.classList.add("sky");
+              }
+            } else {
+              newDiv.classList.add("sky");
+            }
             break;
           case "grass":
             newDiv.classList.add("grass");
             break;
           case "stone":
-            newDiv.classList.add("stone");
+            let randomNumber = Math.floor(Math.random() * 10) + 1;
+            if (randomNumber <= 3) {
+              newDiv.classList.add("stone");
+            }
+            if (randomNumber === 4) {
+              newDiv.classList.add("sand");
+            }
+            if (randomNumber === 5) {
+              newDiv.classList.add("coal");
+            }
+            if (randomNumber === 6) {
+              newDiv.classList.add("iron");
+            }
+            if (randomNumber === 7) {
+              newDiv.classList.add("gold");
+            }
+            if (randomNumber === 8) {
+              newDiv.classList.add("diamond");
+            }
+            if (randomNumber === 9) {
+              newDiv.classList.add("emerald");
+            }
+            if (randomNumber === 10) {
+              newDiv.classList.add("redstone");
+            }
             break;
           default:
             break;
         }
         gridElement.appendChild(newDiv);
+      }
+    }
+
+    this.addCellEventListeners();
+  }
+
+  addCellEventListeners() {
+    const cells = document.querySelectorAll(".cell");
+    cells.forEach((cell) => {
+      cell.addEventListener("click", () => {
+        this.handleCellClick(cell);
+      });
+    });
+  }
+
+  handleCellClick(cell) {
+    const blockType = Array.from(cell.classList).find((className) =>
+      [
+        "grass",
+        "stone",
+        "sand",
+        "coal",
+        "iron",
+        "gold",
+        "diamond",
+        "emerald",
+        "redstone",
+        "wood",
+        "leaves",
+        "zombie",
+      ].includes(className)
+    );
+
+    if (!blockType) {
+      if (
+        document.getElementById(this.player.block).attributes["data-count"]
+          .value > 0
+      ) {
+        cell.classList.add(this.player.block);
+        document.getElementById(this.player.block).attributes["data-count"]
+          .value--;
+      }
+    } else {
+      switch (this.player.tool) {
+        case "axe":
+          if (blockType === "wood" || blockType === "leaves") {
+            document.getElementById(blockType).attributes["data-count"].value++;
+            cell.className = "cell";
+          }
+          break;
+        case "pickaxe":
+          if (
+            [
+              "stone",
+              "coal",
+              "iron",
+              "gold",
+              "diamond",
+              "emerald",
+              "redstone",
+            ].includes(blockType)
+          ) {
+            document.getElementById(blockType).attributes["data-count"].value++;
+            cell.className = "cell";
+          }
+          break;
+        case "shovel":
+          if (blockType === "sand" || blockType === "grass") {
+            document.getElementById(blockType).attributes["data-count"].value++;
+            cell.className = "cell";
+          }
+          break;
+        case "sword":
+          if (blockType === "zombie") {
+            document.getElementById(blockType).attributes["data-count"].value++;
+            cell.className = "cell";
+          }
+          break;
+        default:
+          break;
       }
     }
   }

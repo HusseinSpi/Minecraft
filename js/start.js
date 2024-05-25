@@ -1,4 +1,5 @@
 import Game from "../modules/game.js";
+import Player from "../modules/player.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const startPage = document.getElementById("StartGame");
@@ -11,6 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const command = document.getElementById("commands");
   const cancelButton = document.getElementById("cancelButton");
   const createWorldButton = document.getElementById("createWorldButton");
+
+  const player = new Player();
 
   function singlePlayer() {
     startPage.style.display = "none";
@@ -48,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const commands = command.textContent;
     const difficulty = difficultyText.textContent;
 
-    const newGame = new Game(gameName, gameMode, commands, difficulty);
+    const newGame = new Game(player, gameName, gameMode, commands, difficulty);
     newGame.createWorld();
     newGame.print();
 
