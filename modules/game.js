@@ -38,6 +38,14 @@ class Game {
       this.gridMap[i] = [];
       for (let j = 0; j < this.grid; j++) {
         if (i <= this.grid / 2) {
+          if (i === this.grid / 2) {
+            let randomNumber = Math.floor(Math.random() * 10) + 1;
+            if (randomNumber === 1) {
+              this.addTree(i, j);
+            } else {
+              this.gridMap[i][j] = "sky";
+            }
+          }
           this.gridMap[i][j] = "sky";
         } else if (i <= Math.floor(this.grid / 2) + 2) {
           this.gridMap[i][j] = "grass";
@@ -83,8 +91,6 @@ class Game {
                 if (this.isMonster) {
                   newDiv.classList.add("zombie");
                 }
-              } else if (randomNumber === 2) {
-                newDiv.classList.add("wood");
               } else {
                 newDiv.classList.add("sky");
               }
@@ -122,14 +128,36 @@ class Game {
               newDiv.classList.add("redstone");
             }
             break;
+          case "wood":
+            newDiv.classList.add("wood");
+            break;
+          case "leaves":
+            newDiv.classList.add("leaves");
+            break;
           default:
             break;
         }
+
         gridElement.appendChild(newDiv);
       }
     }
 
     this.addCellEventListeners();
+  }
+
+  addTree(i, j) {
+    this.gridMap[i][j] = "stone";
+    this.gridMap[i - 1][j] = "wood";
+    this.gridMap[i - 2][j] = "wood";
+    this.gridMap[i - 3][j] = "leaves";
+    this.gridMap[i - 3][j + 1] = "leaves";
+    this.gridMap[i - 3][j + 2] = "leaves";
+    this.gridMap[i - 3][j - 1] = "leaves";
+    this.gridMap[i - 3][j - 2] = "leaves";
+    this.gridMap[i - 4][j] = "leaves";
+    this.gridMap[i - 4][j - 1] = "leaves";
+    this.gridMap[i - 4][j + 1] = "leaves";
+    this.gridMap[i - 5][j] = "leaves";
   }
 
   addCellEventListeners() {

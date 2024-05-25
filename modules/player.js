@@ -4,12 +4,18 @@ class Player {
     this.init();
     this.tool = null;
     this.block = null;
+    this.inventoryState = false;
   }
 
   init() {
     document.addEventListener("keydown", (event) => {
       if (event.key === "e") {
-        this.showInventory();
+        if (this.inventoryState) {
+          this.inventory.style.display = "none";
+          this.inventoryState = false;
+        } else {
+          this.showInventory();
+        }
       }
     });
 
@@ -47,6 +53,7 @@ class Player {
   }
   showInventory() {
     this.inventory.style.display = "grid";
+    this.inventoryState = true;
   }
 }
 
